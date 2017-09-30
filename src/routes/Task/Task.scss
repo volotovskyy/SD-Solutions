@@ -1,0 +1,24 @@
+@import 'styles/_base';
+
+.grid {
+  @extend %container;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(364px, 1fr));
+  grid-column-gap: 25px;
+  grid-row-gap: 20px;
+  justify-items: center;
+
+  @include breakpoint(tablet) {
+    grid-template-columns: repeat(2, minmax(364px, 1fr));
+    width: $tablet-container;
+  }
+
+  @include breakpoint(mobile) {
+    grid-template-columns: repeat(1, minmax(364px, 1fr));
+    width: auto;
+  }
+}
+
+.grid .product--topdeal {
+  grid-row: span 2;
+}

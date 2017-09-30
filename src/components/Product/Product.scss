@@ -1,0 +1,187 @@
+@import 'styles/_base';
+
+.product {
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  width: 364px;
+  padding: 10px 10px 2px 10px;
+  margin: 11px 15px;
+  border: 1px solid $gold;
+  font-family: $roboto;
+  color: $gray;
+  justify-content: center;
+
+  &:hover {
+    border: 3px solid $gold;
+    padding: 8px 8px 0 8px;
+    cursor: pointer;
+
+    .product__name {
+      text-decoration: underline;
+    }
+  }
+
+  &__description {
+    flex: 0 0 60%;
+  }
+
+  &__discount {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: $gold;
+    color: $white;
+    font-size: 18px;
+    height: 58px;
+    width: 58px;
+    border-radius: 50%;
+  }
+
+  &__name {
+    // TODO: look for possible alternatives of multilines text cropping
+    // max-width: 205px;
+    margin: 10px auto 0;
+    @include showMaxLines($font-size, $line-height, 3);
+  }
+
+  &__image {
+    height: 130px;
+    width: 130px;
+    object-fit: cover;
+  }
+
+  &__sale-info {
+    display: flex;
+    flex: 0 0 100%;
+    align-items: baseline;
+    margin: 14px 0 6px;
+  }
+
+  &__price {
+    position: relative;
+    margin: 0 25px;
+    font-size: 14px;
+    background:
+      linear-gradient(to top right,
+        rgba(0,0,0,0) 0%,
+        rgba(0,0,0,0) calc(50% - .8px),
+        rgba(0,0,0,1) 50%,
+        rgba(0,0,0,0) calc(50% + .8px),
+        rgba(0,0,0,0) 100%);
+  }
+
+  &__price--final {
+    font-size: 21px;
+    color: $gold;
+  }
+
+  &__retailer,
+  &__specials {
+    font-size: 14px;
+  }
+
+  &__retailer {
+    flex: 1;
+    text-align: right;
+  }
+
+  &__specials {
+    display: flex;
+    justify-content: space-around;
+    flex: 1 100%;
+    align-items: center;
+    border-top: 2px dashed $gray;
+
+    &__item {
+      @include showMaxLines($font-size, $line-height, 2);
+      display: flex;
+      align-items: center;
+      flex-basis: 30%;
+      justify-content: center;
+      text-align: center;
+    }
+
+    &__divider {
+      margin: 0 8px;
+    }
+  }
+
+  &--topdeal {
+    @extend .product;
+    border: 1px solid $carmine-pink;
+    position: relative;
+    // HACK: find way to get rid of hardcoded value
+    // 522px - as fallback in case 'Top Deal will be in the and of list at last row'
+    height: 522px;
+
+    &:hover {
+      border: 3px solid $carmine-pink;
+
+      .product--topdeal__image {
+        left: 8px;
+      }
+    }
+
+    & .product__description {
+      flex: 0
+    }
+
+    & .product__discount {
+      background-color: $carmine-pink;
+      position: absolute;
+      left: 10px;
+    }
+
+    &:hover .product__discount {
+      left: 8px;
+    }
+
+    &__image {
+      height: 245px;
+      width: 245px;
+      object-fit: cover;
+      left: 10px;
+    }
+
+    &__sale-info {
+      display: flex;
+      flex: 1;
+      border-bottom: 2px dashed $gray;
+      align-items: baseline;
+    }
+
+    &__price--final {
+      font-size: 21px;
+      color: $carmine-pink;
+    }
+
+    & > .product__retailer {
+      flex: 1;
+      text-align: right;
+    }
+  }
+
+  &--deal {
+    @extend .product;
+    border: 1px solid $orange;
+
+    &:hover {
+      border: 3px solid $orange;
+    }
+
+    & .product__discount {
+      background-color: $orange;
+    }
+
+    &__sale-info {
+      @extend .product__sale-info;
+    }
+
+    &__price--final {
+      font-size: 21px;
+      color: $orange;
+    }
+  }
+}

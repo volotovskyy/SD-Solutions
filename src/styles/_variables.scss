@@ -1,0 +1,32 @@
+// ==============
+// --- Typography ---
+// ==============
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
+$roboto: 'Roboto', sans-serif;
+$font-size: 14px;
+$line-height: 1.5;
+$show-three-lines: 3;
+$show-two-lines: 2;
+
+// ================
+// --- Colors Theme ---
+// ================
+
+$white: #ffffff;
+$black: #000000;
+$gray: #878787;
+$gold: #ffbe17;
+$orange: #ff931d;
+$carmine-pink: #ff6666;
+
+// ================
+// --- Sizes ---
+// ================
+$container: 1200px;
+$tablet-container: 768px;
+
+$breakpoint-list: (
+  (mobile,   null,    767px),
+  (tablet,   768px,   1199px),
+  (desktop,  1200px,   null),
+);

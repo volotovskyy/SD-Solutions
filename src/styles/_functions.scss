@@ -1,0 +1,8 @@
+@function get-list-item($label, $list) {
+  @each $list-item in $list {
+    @if nth($list-item, 1) == $label {
+      @return $list-item;
+    }
+  }
+  @return null;
+}
